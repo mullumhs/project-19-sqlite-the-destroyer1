@@ -75,13 +75,14 @@ def update_movie_rating(conn, title, new_rating):
     curser = conn.cursor()
 
 
-    curser.execute('''
+
+    curser.execute(f'''
 
     UPDATE movies
 
-    SET year = 8720
+    SET rating = {new_rating}
 
-    WHERE title = 'Inception'
+    WHERE title = "{title}"
 
     ''')
 
@@ -91,7 +92,9 @@ def delete_movie(conn, title):
 
     # TODO: Delete a specified movie from the database
 
-    pass
+    cursor = conn.cursor()
+
+    cursor.execute(f'DELETE FROM movies WHERE title = "{title}"')
 
 
 
